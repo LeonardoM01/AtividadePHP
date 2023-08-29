@@ -58,9 +58,14 @@
             }
     
         ?>
-    
+        <br>
+        <div style="display:flex ; justify-content:flex-end">       
+            <a href="index.html">
+                <img src="img/botao-voltar.png" alt="butãovulta" width="40px" height="40px" >
+            </a>
+        </div>
     </section> 
-    
+
     <script>
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
