@@ -24,7 +24,7 @@
             <br>Esses componentes incluem:
         </p>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <ul class="list-group">
                     <li class="list-group-item">tm-sec</li>
                     <li class="list-group-item">tm-min</li>
@@ -37,29 +37,69 @@
                     <li class="list-group-item">tm_isdst</li>
                 </ul>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 <ul class="list-group">
-                    <li class="list-group-item">tm-sec</li>
-                    <li class="list-group-item">tm-min</li>
-                    <li class="list-group-item">tm_hour</li>
-                    <li class="list-group-item">tm_mday</li>
-                    <li class="list-group-item">tm_mon</li>
-                    <li class="list-group-item">tm_year</li>
-                    <li class="list-group-item">tm_wday</li>
-                    <li class="list-group-item">tm_yday</li>
-                    <li class="list-group-item">tm_isdst</li>
+                    <li class="list-group-item">Os segundos da hora.</li>
+                    <li class="list-group-item">Os minutos da hora.</li>
+                    <li class="list-group-item">As horas do dia (formato de 24 horas).</li>
+                    <li class="list-group-item">O dia do mês (1 a 31).</li>
+                    <li class="list-group-item">O mês do ano (0 a 11, onde 0 é janeiro).</li>
+                    <li class="list-group-item">O ano (anos após 1900)</li>
+                    <li class="list-group-item">O dia da semana (0 a 6, onde 0 é domingo).</li>
+                    <li class="list-group-item">O dia do ano (1 a 365 ou 366 em anos bissextos).</li>
+                    <li class="list-group-item">Um indicador de horário de verão (1 se estiver em vigor, 0 se não estiver e -1 se desconhecido).</li>
                 </ul>
             </div>
             
         </div>
+        <br>
+        <div class="row">
+            <br><p>Então, você pode ver a hora local de uma dessas regiões abaixo:
+        </div>
+        <form action="LocalTime.php" method="post">
+            <select name="regiao" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option value="America/Sao_Paulo">São Paulo, Brasil - America do Sul</option>
+                <option value="Pacific/Pago_Pago">Pago Pago, Samoa Americana - Pacifico</option>
+                <option value="Asia/Dubai">Dubai, Emirados Árabes Unidos - Asia</option>
+                <option value="Antarctica/Troll">Troll, Jutulsessen - Antártida</option>
+                <option value="Indian/Maldives">Maldives, Maldives - Asia</option>
+            </select>
+            <br><button type="submit">Ver informações de hora da região</button>
+        </form>
     </div>
+    <div class="row">   
+        <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST["regiao"])) {
+                    $regiao = $_POST["regiao"];
+
+                    date_default_timezone_set($regiao);
+                    $localtime = localtime();
+                    $mes = $localtime[4] + 1;
+                    $ano = $localtime[5] + 1900;
+                    $localtimeSelect = "$localtime[3]/$mes/$ano $localtime[2]:$localtime[1]:$localtime[0]"; 
+
+                    echo "<br><h4 class=\"container\">O dia e a hora em $regiao é: $localtimeSelect</h4>"; 
+
+                }
+            } 
+            
+        ?>
+
+        <div style="display:flex ; justify-content:flex-end">       
+            <a href="index.html">
+                <img src="img/botao-voltar.png" alt="butãovulta" width="40px" height="40px" >
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script> 
+
 </body>
 </html>
 
-<?php
-    date_default_timezone_set("America/Sao_Paulo");
-    $localtime = localtime();
-    $localtime_assoc = localtime(time(), true);
-    print_r($localtime);
-    print_r($localtime_assoc);
-?>
