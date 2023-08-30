@@ -8,7 +8,11 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>    
+    <link rel="stylesheet" type="text/css" href="./CSS/style.css" media="screen" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container" style="text-align: justify;">
@@ -64,10 +68,9 @@
                 <option value="Antarctica/Troll">Troll, Jutulsessen - Antártida</option>
                 <option value="Indian/Maldives">Maldives, Maldives - Asia</option>
             </select>
-            <br><button type="submit">Ver informações de hora da região</button>
+            <br><button class="btn btn-danger" type="submit">Ver informações de hora da região</button>
         </form>
-    </div>
-    <div class="row">   
+    </div>       
         <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (isset($_POST["regiao"])) {
@@ -77,7 +80,7 @@
                     $localtime = localtime();
                     $mes = $localtime[4] + 1;
                     $ano = $localtime[5] + 1900;
-                    $localtimeSelect = "$localtime[3]/$mes/$ano $localtime[2]:$localtime[1]:$localtime[0]"; 
+                    $localtimeSelect = "$localtime[3]/0$mes/$ano $localtime[2]:$localtime[1]:$localtime[0]"; 
 
                     echo "<br><h4 class=\"container\">O dia e a hora em $regiao é: $localtimeSelect</h4>"; 
 
@@ -86,13 +89,13 @@
             
         ?>
 
-        <div style="display:flex ; justify-content:flex-end">       
+        <div class="container" style="display:flex ; justify-content:flex-end">       
             <a href="index.html">
                 <img src="img/botao-voltar.png" alt="butãovulta" width="40px" height="40px" >
             </a>
         </div>
 
-    </div>
+    
 
     <script>
         if (window.history.replaceState) {
