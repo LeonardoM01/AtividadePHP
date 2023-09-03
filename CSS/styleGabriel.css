@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap');
+
+@font-face {
+    font-family: 'bunitinha';
+    src: url(./fonte/Kanit-ExtraLight.ttf);
+}
+
+#texto-principal {
+    font-family: 'bunitinha';
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3rem;
+}
+
+p {
+
+    font-size: 1.2rem;
+}
+
+#input {
+    display: flex;
+    justify-content: center;
+
+}
+
+.button {
+    border: 1px solid black;
+    align-items: center;
+    border-radius: 8px;
+    margin-left: 10px;
+    padding: 8px;
+}
+
+input {
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px 100px;
+}
+
+button:hover {
+    color: #78c1f3;
+}
