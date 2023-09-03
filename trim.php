@@ -93,6 +93,12 @@
             echo "<br><p>Frase após aplicação da função trim(): '$frase'</p>";
         }
         ?>
+        <br>
+        <div style="display:flex ; justify-content:flex-end">       
+                <a href="index.html">
+                    <img src="img/botao-voltar.png" alt="butãovulta" width="40px" height="40px" >
+                </a>
+        </div>
     </div>
 </body>
 </html>
